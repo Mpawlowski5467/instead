@@ -1,0 +1,16 @@
+name: Inkscape
+replaces:
+  - photoshop
+description: Vector graphics editor for illustrations, icons, and scalable artwork.
+website: https://inkscape.org
+repo: https://gitlab.com/inkscape/inkscape
+license: GPL-3.0
+tags:
+  - free
+  - open-source
+  - offline
+  - no-account
+platforms:
+  - macos
+  - windows
+  - linux

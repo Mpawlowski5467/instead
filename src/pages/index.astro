@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../components/Layout.astro';
+
+const tools = (await getCollection('tools')).sort((a, b) =>
+  a.data.name.localeCompare(b.data.name),
+);
+const alternatives = await getCollection('alternatives');
+
+// quick stub home until the search island lands in step 7
+---
+
+<Layout>
+  <section style="padding: 48px 0 16px;">
+    <h1 style="font-size:32px; font-weight:500; letter-spacing:-0.02em; margin:0;">
+      What do you want to replace?
+    </h1>
+    <p class="muted" style="margin:8px 0 0;">
+      (Search bar lands in step 7. For now, browse below.)
+    </p>
+  </section>
+
+  <section style="margin-top:32px;">
+    <h2 style="font-size:14px; font-weight:500; color:var(--muted); margin:0 0 12px;">
+      All tools
+    </h2>
+    <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column;" class="row-sep">
+      {tools.map((tool) => {
+        const count = alternatives.filter((alt) =>
+          alt.data.replaces.some((r) => r.id === tool.id),
+        ).length;
+        return (
+          <li>
+            <a
+              href={`/replaces/${tool.id}`}
+              style="display:flex; justify-content:space-between; align-items:baseline; padding:14px 0; gap:16px;"
+            >
+              <span>
+                <span style="font-weight:500;">{tool.data.name}</span>
+                <span class="muted" style="margin-left:10px; font-size:14px;">{tool.data.category}</span>
+              </span>
+              <span class="muted" style="font-size:14px; font-family:var(--font-mono);">
+                {count} {count === 1 ? 'alt' : 'alts'}
+              </span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+</Layout>

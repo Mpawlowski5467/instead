@@ -1,0 +1,19 @@
+name: Zulip
+replaces:
+  - slack
+description: Threaded team chat organized by topic so conversations stay readable later.
+website: https://zulip.com
+repo: https://github.com/zulip/zulip
+license: Apache-2.0
+tags:
+  - free
+  - open-source
+  - self-hostable
+  - paid-tier-available
+platforms:
+  - web
+  - macos
+  - windows
+  - linux
+  - ios
+  - android

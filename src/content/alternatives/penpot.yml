@@ -1,0 +1,13 @@
+name: Penpot
+replaces:
+  - figma
+description: Browser-based design and prototyping tool built on web standards like SVG.
+website: https://penpot.app
+repo: https://github.com/penpot/penpot
+license: MPL-2.0
+tags:
+  - free
+  - open-source
+  - self-hostable
+platforms:
+  - web

@@ -1,0 +1,16 @@
+name: LibreOffice Writer
+replaces:
+  - microsoft-word
+description: Mature desktop word processor with full ODF support and DOCX compatibility.
+website: https://www.libreoffice.org
+repo: https://git.libreoffice.org/core
+license: MPL-2.0
+tags:
+  - free
+  - open-source
+  - offline
+  - no-account
+platforms:
+  - macos
+  - windows
+  - linux

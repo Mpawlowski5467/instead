@@ -1,0 +1,16 @@
+name: GIMP
+replaces:
+  - photoshop
+description: Long-standing raster image editor with layers, masks, and a deep plugin ecosystem.
+website: https://www.gimp.org
+repo: https://gitlab.gnome.org/GNOME/gimp
+license: GPL-3.0
+tags:
+  - free
+  - open-source
+  - offline
+  - no-account
+platforms:
+  - macos
+  - windows
+  - linux

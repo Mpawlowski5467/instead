@@ -1,0 +1,14 @@
+name: Etherpad
+replaces:
+  - microsoft-word
+description: Real-time collaborative text editing in the browser, with no account needed.
+website: https://etherpad.org
+repo: https://github.com/ether/etherpad-lite
+license: Apache-2.0
+tags:
+  - free
+  - open-source
+  - self-hostable
+  - no-account
+platforms:
+  - web

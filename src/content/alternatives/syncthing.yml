@@ -1,0 +1,18 @@
+name: Syncthing
+replaces:
+  - dropbox
+description: Continuous peer-to-peer file sync between your own devices, with no cloud.
+website: https://syncthing.net
+repo: https://github.com/syncthing/syncthing
+license: MPL-2.0
+tags:
+  - free
+  - open-source
+  - offline
+  - no-account
+  - e2e-encrypted
+platforms:
+  - macos
+  - windows
+  - linux
+  - android

@@ -1,0 +1,16 @@
+name: Firefox
+replaces:
+  - chrome
+description: Independent web browser from Mozilla with strong tracking protections.
+website: https://www.mozilla.org/firefox/
+repo: https://hg.mozilla.org/mozilla-central
+license: MPL-2.0
+tags:
+  - free
+  - open-source
+platforms:
+  - macos
+  - windows
+  - linux
+  - ios
+  - android

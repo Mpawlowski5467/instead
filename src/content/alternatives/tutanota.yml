@@ -1,0 +1,19 @@
+name: Tuta Mail
+replaces:
+  - gmail
+description: Encrypted email and calendar with open-source apps and zero-knowledge storage.
+website: https://tuta.com
+repo: https://github.com/tutao/tutanota
+license: GPL-3.0
+tags:
+  - free
+  - open-source
+  - e2e-encrypted
+  - paid-tier-available
+platforms:
+  - web
+  - macos
+  - windows
+  - linux
+  - ios
+  - android

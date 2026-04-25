@@ -1,0 +1,19 @@
+name: Proton Mail
+replaces:
+  - gmail
+description: End-to-end encrypted email hosted in Switzerland, with open-source clients.
+website: https://proton.me/mail
+repo: https://github.com/ProtonMail/WebClients
+license: GPL-3.0
+tags:
+  - free
+  - open-source
+  - e2e-encrypted
+  - paid-tier-available
+platforms:
+  - web
+  - macos
+  - windows
+  - linux
+  - ios
+  - android

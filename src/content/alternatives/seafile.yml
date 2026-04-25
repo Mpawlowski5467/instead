@@ -1,0 +1,19 @@
+name: Seafile
+replaces:
+  - dropbox
+description: File sync server with library-based storage and optional client-side encryption.
+website: https://www.seafile.com
+repo: https://github.com/haiwen/seafile
+license: AGPL-3.0
+tags:
+  - free
+  - open-source
+  - self-hostable
+  - e2e-encrypted
+platforms:
+  - web
+  - macos
+  - windows
+  - linux
+  - ios
+  - android

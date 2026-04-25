@@ -1,0 +1,16 @@
+name: Jitsi Meet
+replaces:
+  - zoom
+description: Browser-based video conferencing with no account required to start a call.
+website: https://meet.jit.si
+repo: https://github.com/jitsi/jitsi-meet
+license: Apache-2.0
+tags:
+  - free
+  - open-source
+  - self-hostable
+  - no-account
+platforms:
+  - web
+  - ios
+  - android

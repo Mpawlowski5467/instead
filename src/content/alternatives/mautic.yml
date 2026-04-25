@@ -1,0 +1,13 @@
+name: Mautic
+replaces:
+  - mailchimp
+description: Marketing automation with email campaigns, segmentation, and lead scoring.
+website: https://www.mautic.org
+repo: https://github.com/mautic/mautic
+license: GPL-3.0
+tags:
+  - free
+  - open-source
+  - self-hostable
+platforms:
+  - web

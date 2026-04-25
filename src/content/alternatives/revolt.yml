@@ -1,0 +1,18 @@
+name: Revolt
+replaces:
+  - discord
+description: Discord-like chat for communities, with self-hosting for full data control.
+website: https://revolt.chat
+repo: https://github.com/revoltchat/revolt
+license: AGPL-3.0
+tags:
+  - free
+  - open-source
+  - self-hostable
+platforms:
+  - web
+  - macos
+  - windows
+  - linux
+  - ios
+  - android

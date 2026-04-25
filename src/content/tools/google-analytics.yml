@@ -1,0 +1,6 @@
+name: Google Analytics
+slug: google-analytics
+category: analytics
+description: Web analytics service that tracks visitor behavior, conversions, and traffic sources.
+website: https://marketingplatform.google.com/about/analytics/
+proprietary: true

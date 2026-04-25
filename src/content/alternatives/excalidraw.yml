@@ -1,0 +1,15 @@
+name: Excalidraw
+replaces:
+  - figma
+description: Whiteboard for hand-drawn-style diagrams, wireframes, and quick UI sketches.
+website: https://excalidraw.com
+repo: https://github.com/excalidraw/excalidraw
+license: MIT
+tags:
+  - free
+  - open-source
+  - self-hostable
+  - no-account
+  - e2e-encrypted
+platforms:
+  - web

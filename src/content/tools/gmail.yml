@@ -1,0 +1,6 @@
+name: Gmail
+slug: gmail
+category: email
+description: Hosted email service from Google with built-in spam filtering and search.
+website: https://mail.google.com
+proprietary: true

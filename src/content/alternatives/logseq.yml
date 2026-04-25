@@ -1,0 +1,19 @@
+name: Logseq
+replaces:
+  - notion
+description: Outliner for networked notes that stores everything as plain text on disk.
+website: https://logseq.com
+repo: https://github.com/logseq/logseq
+license: AGPL-3.0
+tags:
+  - free
+  - open-source
+  - offline
+  - local-first
+  - no-account
+platforms:
+  - macos
+  - windows
+  - linux
+  - ios
+  - android

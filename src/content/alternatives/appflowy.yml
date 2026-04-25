@@ -1,0 +1,21 @@
+name: AppFlowy
+replaces:
+  - notion
+description: Open-source workspace for notes, wikis, and projects with offline-first sync.
+website: https://appflowy.io
+repo: https://github.com/AppFlowy-IO/AppFlowy
+license: AGPL-3.0
+tags:
+  - free
+  - open-source
+  - self-hostable
+  - offline
+  - local-first
+  - paid-tier-available
+platforms:
+  - web
+  - macos
+  - windows
+  - linux
+  - ios
+  - android

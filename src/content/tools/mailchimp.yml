@@ -1,0 +1,6 @@
+name: Mailchimp
+slug: mailchimp
+category: email
+description: Hosted newsletter and email marketing service with templates and audience tracking.
+website: https://mailchimp.com
+proprietary: true

@@ -1,0 +1,19 @@
+name: Nextcloud
+replaces:
+  - dropbox
+description: Self-hosted file sync, sharing, and collaboration with calendar, mail, and apps.
+website: https://nextcloud.com
+repo: https://github.com/nextcloud/server
+license: AGPL-3.0
+tags:
+  - free
+  - open-source
+  - self-hostable
+  - paid-tier-available
+platforms:
+  - web
+  - macos
+  - windows
+  - linux
+  - ios
+  - android

@@ -1,0 +1,20 @@
+name: Element
+replaces:
+  - slack
+  - discord
+description: Encrypted Matrix client for chat, voice, and video across federated servers.
+website: https://element.io
+repo: https://github.com/element-hq/element-web
+license: AGPL-3.0
+tags:
+  - free
+  - open-source
+  - self-hostable
+  - e2e-encrypted
+platforms:
+  - web
+  - macos
+  - windows
+  - linux
+  - ios
+  - android

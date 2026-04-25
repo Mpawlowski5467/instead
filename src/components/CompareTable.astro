@@ -1,0 +1,89 @@
+---
+interface Alt {
+  name: string;
+  license: string;
+  tags: string[];
+  platforms: string[];
+}
+
+interface Props {
+  alternatives: Alt[];
+}
+
+const { alternatives } = Astro.props;
+
+const has = (alt: Alt, tag: string) => alt.tags.includes(tag);
+
+const rows: { label: string; render: (a: Alt) => string }[] = [
+  { label: 'Free', render: (a) => (has(a, 'free') ? '✓' : '—') },
+  { label: 'Open source', render: (a) => (has(a, 'open-source') ? '✓' : '—') },
+  { label: 'Self-hostable', render: (a) => (has(a, 'self-hostable') ? '✓' : '—') },
+  { label: 'Offline', render: (a) => (has(a, 'offline') || has(a, 'local-first') ? '✓' : '—') },
+  { label: 'No account', render: (a) => (has(a, 'no-account') ? '✓' : '—') },
+  { label: 'License', render: (a) => a.license },
+  { label: 'Platforms', render: (a) => (a.platforms.length ? a.platforms.join(', ') : '—') },
+];
+---
+
+<div class="compare-scroll">
+  <table class="compare">
+    <thead>
+      <tr>
+        <th scope="col" class="row-label" />
+        {alternatives.map((a) => (
+          <th scope="col">{a.name}</th>
+        ))}
+      </tr>
+    </thead>
+    <tbody class="row-sep">
+      {rows.map((row) => (
+        <tr>
+          <th scope="row" class="row-label">{row.label}</th>
+          {alternatives.map((a) => {
+            const val = row.render(a);
+            const isCheck = val === '✓';
+            const isDash = val === '—';
+            const cls = isCheck ? 'mark check' : isDash ? 'mark dash' : 'mark';
+            return <td class={cls}>{val}</td>;
+          })}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .compare-scroll {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table.compare {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 480px;
+  }
+  table.compare th,
+  table.compare td {
+    padding: 12px 14px;
+    text-align: left;
+    vertical-align: top;
+    font-weight: 400;
+  }
+  table.compare thead th {
+    color: var(--fg);
+    font-weight: 500;
+    font-size: 14px;
+  }
+  table.compare th.row-label {
+    color: var(--muted);
+    width: 30%;
+    font-weight: 400;
+  }
+  table.compare tbody tr {
+    border-top: 1px solid var(--border);
+  }
+  .mark.check { color: var(--accent); }
+  .mark.dash { color: var(--muted); }
+</style>

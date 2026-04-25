@@ -1,0 +1,6 @@
+name: Dropbox
+slug: dropbox
+category: storage
+description: Hosted file sync and sharing across devices with team folders.
+website: https://www.dropbox.com
+proprietary: true

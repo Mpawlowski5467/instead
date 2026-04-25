@@ -1,0 +1,33 @@
+---
+import TagChip from './TagChip.astro';
+
+interface Props {
+  name: string;
+  description: string;
+  href: string;
+  tags?: string[];
+  license?: string;
+  repo?: string;
+}
+
+const { name, description, href, tags = [], license, repo } = Astro.props;
+---
+<a class="card fade-in" href={href} rel="noopener noreferrer">
+  <div style="display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;">
+    <h3 style="font-size:18px; font-weight:500; margin:0;">{name}</h3>
+    {license && (
+      <span class="chip" style="font-size:11px;">[ {license} ]</span>
+    )}
+  </div>
+  <p style="margin:8px 0 0; color:var(--muted); font-size:15px;">{description}</p>
+  {(tags.length > 0 || repo) && (
+    <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; align-items:center;">
+      {tags.map((t) => <TagChip label={t} />)}
+      {repo && (
+        <span class="chip" style="border-color:transparent; color:var(--muted);">
+          source ↗
+        </span>
+      )}
+    </div>
+  )}
+</a>

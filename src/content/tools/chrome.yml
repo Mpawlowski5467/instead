@@ -1,0 +1,6 @@
+name: Chrome
+slug: chrome
+category: other
+description: Web browser from Google built on the Chromium engine.
+website: https://www.google.com/chrome/
+proprietary: true

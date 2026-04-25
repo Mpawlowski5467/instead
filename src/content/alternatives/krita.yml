@@ -1,0 +1,17 @@
+name: Krita
+replaces:
+  - photoshop
+description: Painting app with brush engines tuned for illustrators and concept artists.
+website: https://krita.org
+repo: https://invent.kde.org/graphics/krita
+license: GPL-3.0
+tags:
+  - free
+  - open-source
+  - offline
+  - no-account
+platforms:
+  - macos
+  - windows
+  - linux
+  - android

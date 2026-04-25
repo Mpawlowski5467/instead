@@ -1,0 +1,15 @@
+name: LibreWolf
+replaces:
+  - chrome
+description: A Firefox fork preconfigured for privacy with telemetry and pocket removed.
+website: https://librewolf.net
+repo: https://codeberg.org/librewolf/source
+license: MPL-2.0
+tags:
+  - free
+  - open-source
+  - no-account
+platforms:
+  - macos
+  - windows
+  - linux

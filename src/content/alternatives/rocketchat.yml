@@ -1,0 +1,19 @@
+name: Rocket.Chat
+replaces:
+  - slack
+description: Self-hosted team chat with channels, video calls, and federation support.
+website: https://www.rocket.chat
+repo: https://github.com/RocketChat/Rocket.Chat
+license: MIT
+tags:
+  - free
+  - open-source
+  - self-hostable
+  - paid-tier-available
+platforms:
+  - web
+  - macos
+  - windows
+  - linux
+  - ios
+  - android

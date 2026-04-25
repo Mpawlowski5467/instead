@@ -1,0 +1,83 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Layout from '../../components/Layout.astro';
+import ResultCard from '../../components/ResultCard.astro';
+import CompareTable from '../../components/CompareTable.astro';
+import { SITE } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const tools = await getCollection('tools');
+  const alternatives = await getCollection('alternatives');
+
+  return tools.map((tool) => {
+    const matches = alternatives
+      .filter((alt) =>
+        alt.data.replaces.some((ref) => ref.id === tool.id || ref.slug === tool.id),
+      )
+      .sort((a, b) => a.data.name.localeCompare(b.data.name));
+
+    return {
+      params: { slug: tool.id },
+      props: { tool, alternatives: matches },
+    };
+  });
+}
+
+const { tool, alternatives } = Astro.props;
+
+const editUrl = SITE.editFileUrl(`src/content/tools/${tool.id}.yml`);
+---
+
+<Layout
+  title={`Replace ${tool.data.name} — instead.`}
+  description={`Open-source alternatives to ${tool.data.name}.`}
+>
+  <p style="margin-top:8px;">
+    <a href="/" class="muted" style="font-size:14px;">← back</a>
+  </p>
+
+  <h1 style="font-size:36px; font-weight:500; letter-spacing:-0.02em; margin:16px 0 8px;">
+    Replace {tool.data.name}
+  </h1>
+  <p class="muted" style="font-size:16px; margin:0 0 6px;">{tool.data.description}</p>
+  <p class="muted" style="font-size:14px; margin:0 0 28px;">
+    {alternatives.length} {alternatives.length === 1 ? 'alternative' : 'alternatives'}
+  </p>
+
+  {alternatives.length === 0 ? (
+    <p class="muted">Nothing yet. <a href="/submit" class="accent">Suggest one →</a></p>
+  ) : (
+    <>
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        {alternatives.map((alt) => (
+          <ResultCard
+            name={alt.data.name}
+            description={alt.data.description}
+            href={alt.data.website}
+            tags={alt.data.tags}
+            license={alt.data.license}
+            repo={alt.data.repo}
+          />
+        ))}
+      </div>
+
+      {alternatives.length > 1 && (
+        <section style="margin-top:48px;">
+          <h2 style="font-size:20px; font-weight:500; margin:0 0 16px;">Compare side-by-side</h2>
+          <CompareTable
+            alternatives={alternatives.map((a) => ({
+              name: a.data.name,
+              license: a.data.license,
+              tags: a.data.tags,
+              platforms: a.data.platforms,
+            }))}
+          />
+        </section>
+      )}
+    </>
+  )}
+
+  <p style="margin-top:48px; font-size:14px;">
+    <a href={editUrl} class="muted" rel="noopener noreferrer">Suggest an edit ↗</a>
+  </p>
+</Layout>

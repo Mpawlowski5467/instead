@@ -1,0 +1,19 @@
+name: Jami
+replaces:
+  - zoom
+  - discord
+description: Peer-to-peer video, voice, and text with no central server and no account.
+website: https://jami.net
+repo: https://github.com/savoirfairelinux/jami-client-qt
+license: GPL-3.0
+tags:
+  - free
+  - open-source
+  - no-account
+  - e2e-encrypted
+platforms:
+  - macos
+  - windows
+  - linux
+  - ios
+  - android

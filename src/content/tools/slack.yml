@@ -1,0 +1,6 @@
+name: Slack
+slug: slack
+category: chat
+description: Channel-based team messaging with threads, integrations, and search.
+website: https://slack.com
+proprietary: true

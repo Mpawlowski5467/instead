@@ -1,0 +1,17 @@
+name: Thunderbird
+replaces:
+  - gmail
+description: Mozilla's desktop email client with calendar, address book, and IMAP support.
+website: https://www.thunderbird.net
+repo: https://hg.mozilla.org/comm-central
+license: MPL-2.0
+tags:
+  - free
+  - open-source
+  - offline
+  - no-account
+platforms:
+  - macos
+  - windows
+  - linux
+  - android

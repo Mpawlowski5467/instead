@@ -1,0 +1,19 @@
+name: Anytype
+replaces:
+  - notion
+description: Local-first, encrypted personal knowledge base with object-based notes.
+website: https://anytype.io
+repo: https://github.com/anyproto/anytype-ts
+license: Any-Source-Available-1.0
+tags:
+  - free
+  - open-source
+  - offline
+  - e2e-encrypted
+  - local-first
+platforms:
+  - macos
+  - windows
+  - linux
+  - ios
+  - android

@@ -1,0 +1,16 @@
+name: Brave
+replaces:
+  - chrome
+description: Chromium-based browser with built-in ad and tracker blocking by default.
+website: https://brave.com
+repo: https://github.com/brave/brave-browser
+license: MPL-2.0
+tags:
+  - free
+  - open-source
+platforms:
+  - macos
+  - windows
+  - linux
+  - ios
+  - android

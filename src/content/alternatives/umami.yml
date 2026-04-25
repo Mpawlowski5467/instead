@@ -1,0 +1,14 @@
+name: Umami
+replaces:
+  - google-analytics
+description: Lightweight, self-hosted web analytics with no cookies and tidy dashboards.
+website: https://umami.is
+repo: https://github.com/umami-software/umami
+license: MIT
+tags:
+  - free
+  - open-source
+  - self-hostable
+  - paid-tier-available
+platforms:
+  - web

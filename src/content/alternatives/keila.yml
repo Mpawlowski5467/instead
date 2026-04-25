@@ -1,0 +1,13 @@
+name: Keila
+replaces:
+  - mailchimp
+description: Open-source newsletter tool that connects to your own SMTP for sending.
+website: https://www.keila.io
+repo: https://github.com/pentacent/keila
+license: AGPL-3.0
+tags:
+  - free
+  - open-source
+  - self-hostable
+platforms:
+  - web

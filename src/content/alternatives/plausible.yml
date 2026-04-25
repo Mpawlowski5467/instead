@@ -1,0 +1,13 @@
+name: Plausible
+replaces:
+  - google-analytics
+description: Cookie-free, privacy-friendly web analytics that fits on a single dashboard.
+website: https://plausible.io
+repo: https://github.com/plausible/analytics
+license: AGPL-3.0
+tags:
+  - open-source
+  - self-hostable
+  - paid-tier-available
+platforms:
+  - web

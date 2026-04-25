@@ -1,0 +1,13 @@
+name: BigBlueButton
+replaces:
+  - zoom
+description: Video conferencing built for online classrooms with whiteboards and breakout rooms.
+website: https://bigbluebutton.org
+repo: https://github.com/bigbluebutton/bigbluebutton
+license: LGPL-3.0
+tags:
+  - free
+  - open-source
+  - self-hostable
+platforms:
+  - web
