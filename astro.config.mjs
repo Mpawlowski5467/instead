@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import react from '@astrojs/react';
+import preact from '@astrojs/preact';
 import tailwindcss from '@tailwindcss/vite';
 import { loadEnv } from 'vite';
 
@@ -20,7 +20,7 @@ const searchIndexIntegration = {
 // https://astro.build/config
 export default defineConfig({
   site: PUBLIC_SITE_URL || 'https://instead.example',
-  integrations: [react(), searchIndexIntegration],
+  integrations: [preact(), searchIndexIntegration],
   vite: {
     plugins: [tailwindcss()],
   },

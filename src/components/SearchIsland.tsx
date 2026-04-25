@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
+import type { JSX } from 'preact';
 import Fuse from 'fuse.js';
 
 interface Entry {
@@ -16,7 +17,7 @@ interface DedupedResult {
   name: string;
   description: string;
   href: string;
-  meta: string; // small line under the name (e.g. "replaces Notion" or "category")
+  meta: string;
   type: 'tool' | 'alternative';
 }
 
@@ -29,7 +30,6 @@ export default function SearchIsland() {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const loadStarted = useRef(false);
 
-  // lazy-load search index on first interaction
   const ensureLoaded = () => {
     if (loadStarted.current) return;
     loadStarted.current = true;
@@ -39,9 +39,8 @@ export default function SearchIsland() {
       .catch(() => setLoadingFailed(true));
   };
 
-  // global "/" focuses search
   useEffect(() => {
-    const onKey = (e: globalThis.KeyboardEvent) => {
+    const onKey = (e: KeyboardEvent) => {
       if (e.key !== '/') return;
       const t = e.target as HTMLElement | null;
       if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
@@ -64,7 +63,6 @@ export default function SearchIsland() {
   const results: DedupedResult[] = useMemo(() => {
     if (!query.trim() || !fuse) return [];
     const raw = fuse.search(query.trim()).map((r) => r.item);
-    // Dedupe by destination href (an alternative replacing 3 tools should appear 3x with different hrefs — but two entries pointing to same tool page should collapse to one)
     const seen = new Set<string>();
     const out: DedupedResult[] = [];
     for (const e of raw) {
@@ -81,41 +79,39 @@ export default function SearchIsland() {
     return out;
   }, [query, fuse]);
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = (e: JSX.TargetedEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (results.length === 1) {
-      window.location.href = results[0].href;
-    } else if (results.length > 0) {
+    if (results.length > 0) {
       window.location.href = results[0].href;
     }
   };
 
-  const onInputKey = (e: KeyboardEvent<HTMLInputElement>) => {
+  const onInputKey = (e: JSX.TargetedKeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Escape') {
       setQuery('');
-      (e.target as HTMLInputElement).blur();
+      (e.currentTarget as HTMLInputElement).blur();
     }
   };
 
   return (
     <div>
       <form onSubmit={onSubmit} role="search">
-        <label htmlFor="search" className="visually-hidden">
+        <label for="search" class="visually-hidden">
           Search alternatives
         </label>
         <input
           id="search"
           ref={inputRef}
-          className="search-input"
+          class="search-input"
           autoFocus
           type="search"
           autoComplete="off"
-          spellCheck={false}
+          spellcheck={false}
           placeholder="Notion, Zoom, Photoshop..."
           value={query}
-          onChange={(e) => {
+          onInput={(e) => {
             ensureLoaded();
-            setQuery(e.target.value);
+            setQuery((e.currentTarget as HTMLInputElement).value);
           }}
           onFocus={ensureLoaded}
           onKeyDown={onInputKey}
@@ -125,25 +121,25 @@ export default function SearchIsland() {
       {query.trim().length > 0 && (
         <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', gap: 12 }}>
           {!entries && !loadingFailed && (
-            <p className="muted" style={{ fontSize: 14, margin: 0 }}>
+            <p class="muted" style={{ fontSize: 14, margin: 0 }}>
               Loading…
             </p>
           )}
           {loadingFailed && (
-            <p className="muted" style={{ fontSize: 14, margin: 0 }}>
-              Could not load search index. Try <a href="/all" className="accent">/all</a>.
+            <p class="muted" style={{ fontSize: 14, margin: 0 }}>
+              Could not load search index. Try <a href="/all" class="accent">/all</a>.
             </p>
           )}
           {entries && results.length === 0 && (
-            <p className="muted" style={{ fontSize: 14, margin: 0 }}>
-              Nothing yet. <a href="/submit" className="accent">Suggest one →</a>
+            <p class="muted" style={{ fontSize: 14, margin: 0 }}>
+              Nothing yet. <a href="/submit" class="accent">Suggest one →</a>
             </p>
           )}
           {results.map((r) => (
-            <a key={r.href + r.name} href={r.href} className="card fade-in">
+            <a key={r.href + r.name} href={r.href} class="card fade-in">
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 12, flexWrap: 'wrap' }}>
                 <h3 style={{ fontSize: 18, fontWeight: 500, margin: 0 }}>{r.name}</h3>
-                <span className="chip" style={{ fontSize: 11 }}>[ {r.type} ]</span>
+                <span class="chip" style={{ fontSize: 11 }}>[ {r.type} ]</span>
               </div>
               <p style={{ margin: '8px 0 0', color: 'var(--muted)', fontSize: 15 }}>{r.description}</p>
               <p style={{ margin: '8px 0 0', color: 'var(--muted)', fontSize: 12, fontFamily: 'var(--font-mono)' }}>
