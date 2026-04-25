@@ -1,0 +1,14 @@
+name: SilverBullet
+replaces:
+  - notion
+description: Self-hosted, extensible Markdown notebook that runs in any browser.
+website: https://silverbullet.md
+repo: https://github.com/silverbulletmd/silverbullet
+license: MIT
+tags:
+  - free
+  - open-source
+  - self-hostable
+  - local-first
+platforms:
+  - web

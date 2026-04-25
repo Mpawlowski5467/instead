@@ -1,0 +1,14 @@
+name: LiveKit Meet
+replaces:
+  - zoom
+description: Demo conferencing app on top of the LiveKit WebRTC stack you can host yourself.
+website: https://meet.livekit.io
+repo: https://github.com/livekit/meet
+license: Apache-2.0
+tags:
+  - free
+  - open-source
+  - self-hostable
+  - no-account
+platforms:
+  - web

@@ -1,0 +1,16 @@
+name: darktable
+replaces:
+  - photoshop
+description: Non-destructive raw photo workflow tool, like a free Lightroom replacement.
+website: https://www.darktable.org
+repo: https://github.com/darktable-org/darktable
+license: GPL-3.0
+tags:
+  - free
+  - open-source
+  - offline
+  - no-account
+platforms:
+  - macos
+  - windows
+  - linux

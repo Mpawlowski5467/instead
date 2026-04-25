@@ -1,0 +1,15 @@
+name: PairDrop
+replaces:
+  - dropbox
+description: Browser-based AirDrop-style file transfer between devices on the same network.
+website: https://pairdrop.net
+repo: https://github.com/schlagmichdoch/PairDrop
+license: GPL-3.0
+tags:
+  - free
+  - open-source
+  - self-hostable
+  - no-account
+  - e2e-encrypted
+platforms:
+  - web

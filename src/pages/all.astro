@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../components/Layout.astro';
+
+const tools = (await getCollection('tools')).sort((a, b) =>
+  a.data.name.localeCompare(b.data.name),
+);
+const alternatives = await getCollection('alternatives');
+
+const grouped = new Map<string, typeof tools>();
+for (const tool of tools) {
+  const list = grouped.get(tool.data.category) ?? [];
+  list.push(tool);
+  grouped.set(tool.data.category, list);
+}
+const categories = [...grouped.keys()].sort();
+
+const altCount = (toolId: string) =>
+  alternatives.filter((alt) => alt.data.replaces.some((r) => r.id === toolId)).length;
+---
+
+<Layout title="All tools — instead." description="Every tool, grouped by category. The no-JavaScript fallback.">
+  <p style="margin-top:8px;">
+    <a href="/" class="muted" style="font-size:14px;">← back</a>
+  </p>
+
+  <h1 style="font-size:32px; font-weight:500; letter-spacing:-0.02em; margin:16px 0 8px;">
+    All tools
+  </h1>
+  <p class="muted" style="margin:0 0 32px;">
+    {tools.length} tools, {alternatives.length} alternatives. Grouped by category.
+  </p>
+
+  {categories.map((cat) => (
+    <section id={cat} style="margin-top:32px;">
+      <h2 style="font-size:14px; font-weight:500; color:var(--muted); margin:0 0 12px; font-family:var(--font-mono); text-transform:lowercase;">
+        {cat}
+      </h2>
+      <ul class="row-sep" style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column;">
+        {grouped.get(cat)!.map((tool) => (
+          <li>
+            <a
+              href={`/replaces/${tool.id}`}
+              style="display:flex; justify-content:space-between; align-items:baseline; padding:12px 0; gap:16px;"
+            >
+              <span>
+                <span style="font-weight:500;">{tool.data.name}</span>
+                <span class="muted" style="margin-left:10px; font-size:14px;">{tool.data.description}</span>
+              </span>
+              <span class="muted" style="font-size:14px; font-family:var(--font-mono); white-space:nowrap;">
+                {altCount(tool.id)} {altCount(tool.id) === 1 ? 'alt' : 'alts'}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</Layout>

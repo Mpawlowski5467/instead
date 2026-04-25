@@ -1,0 +1,113 @@
+---
+import Layout from '../components/Layout.astro';
+import { SITE } from '../lib/site';
+
+const yamlTemplate = `name: Project name
+replaces:
+  - notion
+description: One sentence, max 120 chars, written as a continuation of "[name] is a..."
+website: https://example.com
+repo: https://github.com/org/project
+license: MIT
+tags:
+  - free
+  - open-source
+  - self-hostable
+platforms:
+  - web
+  - macos
+  - linux
+`;
+
+const newFileUrl = SITE.newFileUrl(
+  'src/content/alternatives',
+  'newfile.yml',
+  yamlTemplate,
+);
+---
+
+<Layout title="Suggest an alternative — instead." description="instead. is built on GitHub. To add a tool, you open a pull request.">
+  <p style="margin-top:8px;">
+    <a href="/" class="muted" style="font-size:14px;">← back</a>
+  </p>
+
+  <h1 style="font-size:32px; font-weight:500; letter-spacing:-0.02em; margin:16px 0 8px;">
+    Suggest an alternative
+  </h1>
+  <p class="muted" style="margin:0 0 32px;">
+    instead. is built on GitHub. To add a tool, you open a pull request.
+  </p>
+
+  <ol style="list-style:none; counter-reset:step; padding:0; margin:0; display:flex; flex-direction:column; gap:18px;">
+    <li class="step"><span class="step-num">1</span><div>
+      <strong style="font-weight:500;">Open the GitHub editor.</strong>
+      <p class="muted" style="margin:4px 0 0; font-size:15px;">
+        The button below creates a new YAML file pre-filled with the template.
+      </p>
+    </div></li>
+    <li class="step"><span class="step-num">2</span><div>
+      <strong style="font-weight:500;">Edit and commit.</strong>
+      <p class="muted" style="margin:4px 0 0; font-size:15px;">
+        Fill in the fields. GitHub will commit it to a new branch on your fork.
+      </p>
+    </div></li>
+    <li class="step"><span class="step-num">3</span><div>
+      <strong style="font-weight:500;">Open a pull request.</strong>
+      <p class="muted" style="margin:4px 0 0; font-size:15px;">
+        CI runs schema validation and link checks. After review, it's merged and live.
+      </p>
+    </div></li>
+  </ol>
+
+  <p style="margin-top:32px;">
+    <a class="btn-primary" href={newFileUrl} rel="noopener noreferrer">
+      → Open GitHub editor
+    </a>
+  </p>
+
+  <h2 style="font-size:16px; font-weight:500; margin:48px 0 12px;">YAML template</h2>
+  <pre><code>{yamlTemplate}</code></pre>
+
+  <h2 style="font-size:16px; font-weight:500; margin:40px 0 12px;">What makes a good submission</h2>
+  <ul style="margin:0; padding-left:18px; color:var(--muted); display:flex; flex-direction:column; gap:6px;">
+    <li>The project is actively maintained.</li>
+    <li>It's free to use, even if a paid tier exists.</li>
+    <li>License is a real OSI-approved or commonly-recognized SPDX identifier.</li>
+    <li>The description reads as a continuation of "[name] is a..." — no marketing words.</li>
+    <li>You'd genuinely recommend it to a friend.</li>
+  </ul>
+</Layout>
+
+<style>
+  ol { counter-reset: step; }
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .step-num {
+    counter-increment: step;
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  pre {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--fg);
+  }
+</style>

@@ -1,0 +1,15 @@
+name: AbiWord
+replaces:
+  - microsoft-word
+description: Lightweight word processor that opens DOC, DOCX, RTF, and plain text.
+website: https://www.abisource.com
+repo: https://gitlab.gnome.org/World/AbiWord
+license: GPL-2.0
+tags:
+  - free
+  - open-source
+  - offline
+  - no-account
+platforms:
+  - linux
+  - windows

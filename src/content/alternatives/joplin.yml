@@ -1,0 +1,20 @@
+name: Joplin
+replaces:
+  - notion
+description: Markdown notes and to-dos with end-to-end encryption and your-choice sync backends.
+website: https://joplinapp.org
+repo: https://github.com/laurent22/joplin
+license: AGPL-3.0
+tags:
+  - free
+  - open-source
+  - offline
+  - local-first
+  - e2e-encrypted
+  - paid-tier-available
+platforms:
+  - macos
+  - windows
+  - linux
+  - ios
+  - android

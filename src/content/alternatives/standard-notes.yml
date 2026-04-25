@@ -1,0 +1,19 @@
+name: Standard Notes
+replaces:
+  - notion
+description: Encrypted notes app with a simple format and long-term durability as goals.
+website: https://standardnotes.com
+repo: https://github.com/standardnotes/app
+license: AGPL-3.0
+tags:
+  - free
+  - open-source
+  - e2e-encrypted
+  - paid-tier-available
+platforms:
+  - web
+  - macos
+  - windows
+  - linux
+  - ios
+  - android

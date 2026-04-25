@@ -1,0 +1,15 @@
+name: Calligra Words
+replaces:
+  - microsoft-word
+description: KDE's word processor with frame-based layout for documents and reports.
+website: https://calligra.org/words/
+repo: https://invent.kde.org/office/calligra
+license: GPL-2.0
+tags:
+  - free
+  - open-source
+  - offline
+  - no-account
+platforms:
+  - linux
+  - windows

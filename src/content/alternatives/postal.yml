@@ -1,0 +1,13 @@
+name: Postal
+replaces:
+  - mailchimp
+description: Self-hosted mail server you can drive newsletter sends through, with a clean API.
+website: https://postalserver.io
+repo: https://github.com/postalserver/postal
+license: MIT
+tags:
+  - free
+  - open-source
+  - self-hostable
+platforms:
+  - linux

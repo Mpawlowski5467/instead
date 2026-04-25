@@ -1,0 +1,16 @@
+name: SimpleLogin
+replaces:
+  - gmail
+description: Email aliasing service, useful for keeping your real address out of sign-up forms.
+website: https://simplelogin.io
+repo: https://github.com/simple-login/app
+license: MIT
+tags:
+  - free
+  - open-source
+  - self-hostable
+  - paid-tier-available
+platforms:
+  - web
+  - ios
+  - android

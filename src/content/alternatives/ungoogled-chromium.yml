@@ -1,0 +1,15 @@
+name: Ungoogled Chromium
+replaces:
+  - chrome
+description: Chromium with Google-specific features and dependencies stripped out.
+website: https://ungoogled-software.github.io
+repo: https://github.com/ungoogled-software/ungoogled-chromium
+license: BSD-3-Clause
+tags:
+  - free
+  - open-source
+  - no-account
+platforms:
+  - macos
+  - windows
+  - linux

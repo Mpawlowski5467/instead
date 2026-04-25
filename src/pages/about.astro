@@ -1,0 +1,25 @@
+---
+import Layout from '../components/Layout.astro';
+---
+
+<Layout title="About — instead." description="What instead. is and how it works.">
+  <p style="margin-top:8px;">
+    <a href="/" class="muted" style="font-size:14px;">← back</a>
+  </p>
+
+  <h1 style="font-size:32px; font-weight:500; letter-spacing:-0.02em; margin:16px 0 28px;">
+    About
+  </h1>
+
+  <div style="display:flex; flex-direction:column; gap:18px; font-size:16px; line-height:1.7;">
+    <p style="margin:0;">
+      <strong style="font-weight:500;">instead.</strong> is a directory of free, privacy-first, open-source alternatives to popular apps. Type the name of something you'd like to replace and you get a short list of projects worth trying.
+    </p>
+    <p style="margin:0;">
+      <span class="muted">How it works.</span> Every entry is a YAML file in a public Git repository. There's no database, no backend, and no admin panel. Suggesting an edit means opening a pull request. The site itself is a folder of static HTML.
+    </p>
+    <p style="margin:0;">
+      <span class="muted">No tracking.</span> No analytics, no cookies, no third-party scripts. Fonts are self-hosted. The only client-side code is a small search box that loads its index on first interaction.
+    </p>
+  </div>
+</Layout>

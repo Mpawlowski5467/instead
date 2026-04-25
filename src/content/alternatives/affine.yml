@@ -1,0 +1,18 @@
+name: AFFiNE
+replaces:
+  - notion
+description: Knowledge base that blends pages, whiteboards, and tables in one canvas.
+website: https://affine.pro
+repo: https://github.com/toeverything/AFFiNE
+license: MIT
+tags:
+  - free
+  - open-source
+  - self-hostable
+  - local-first
+  - paid-tier-available
+platforms:
+  - web
+  - macos
+  - windows
+  - linux

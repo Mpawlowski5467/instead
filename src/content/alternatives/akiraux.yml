@@ -1,0 +1,14 @@
+name: Akira
+replaces:
+  - figma
+description: Native Linux design tool focused on UI mockups and modern interface work.
+website: https://github.com/akiraux/Akira
+repo: https://github.com/akiraux/Akira
+license: GPL-3.0
+tags:
+  - free
+  - open-source
+  - offline
+  - no-account
+platforms:
+  - linux

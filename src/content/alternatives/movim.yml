@@ -1,0 +1,15 @@
+name: Movim
+replaces:
+  - discord
+description: XMPP-based social and chat platform for federated communities, web-first.
+website: https://movim.eu
+repo: https://github.com/movim/movim
+license: AGPL-3.0
+tags:
+  - free
+  - open-source
+  - self-hostable
+  - e2e-encrypted
+platforms:
+  - web
+  - android

@@ -1,51 +1,87 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../components/Layout.astro';
+import SearchIsland from '../components/SearchIsland.tsx';
 
-const tools = (await getCollection('tools')).sort((a, b) =>
-  a.data.name.localeCompare(b.data.name),
-);
+const tools = await getCollection('tools');
 const alternatives = await getCollection('alternatives');
 
-// quick stub home until the search island lands in step 7
+const categories = [...new Set(tools.map((t) => t.data.category))]
+  .filter((c) => c !== 'other')
+  .sort();
+
+// "Recently added" — by file mtime would need fs; for the static seed we just take last 5 alphabetically by alt name as a deterministic stand-in. The ordering is stable across builds and a contributor can re-sort by adding/removing.
+const recentlyAdded = [...alternatives]
+  .sort((a, b) => a.data.name.localeCompare(b.data.name))
+  .slice(0, 5)
+  .map((alt) => {
+    const firstReplaces = alt.data.replaces[0];
+    const tool = tools.find((t) => t.id === firstReplaces.id);
+    return {
+      altName: alt.data.name,
+      toolName: tool?.data.name ?? firstReplaces.id,
+      href: `/replaces/${tool?.id ?? firstReplaces.id}`,
+    };
+  });
 ---
 
 <Layout>
-  <section style="padding: 48px 0 16px;">
-    <h1 style="font-size:32px; font-weight:500; letter-spacing:-0.02em; margin:0;">
+  <section style="padding: 56px 0 8px;">
+    <h1 style="font-size:32px; font-weight:500; letter-spacing:-0.02em; margin:0 0 20px;">
       What do you want to replace?
     </h1>
-    <p class="muted" style="margin:8px 0 0;">
-      (Search bar lands in step 7. For now, browse below.)
-    </p>
+    <SearchIsland client:load />
   </section>
 
-  <section style="margin-top:32px;">
+  <section data-empty-only style="margin-top:48px;">
     <h2 style="font-size:14px; font-weight:500; color:var(--muted); margin:0 0 12px;">
-      All tools
+      Popular categories
     </h2>
-    <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column;" class="row-sep">
-      {tools.map((tool) => {
-        const count = alternatives.filter((alt) =>
-          alt.data.replaces.some((r) => r.id === tool.id),
-        ).length;
-        return (
-          <li>
-            <a
-              href={`/replaces/${tool.id}`}
-              style="display:flex; justify-content:space-between; align-items:baseline; padding:14px 0; gap:16px;"
-            >
-              <span>
-                <span style="font-weight:500;">{tool.data.name}</span>
-                <span class="muted" style="margin-left:10px; font-size:14px;">{tool.data.category}</span>
-              </span>
-              <span class="muted" style="font-size:14px; font-family:var(--font-mono);">
-                {count} {count === 1 ? 'alt' : 'alts'}
-              </span>
-            </a>
-          </li>
-        );
-      })}
+    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+      {categories.map((c) => (
+        <a class="chip" href={`/all#${c}`} style="text-decoration:none;">[ {c} ]</a>
+      ))}
+    </div>
+  </section>
+
+  <section data-empty-only style="margin-top:40px;">
+    <h2 style="font-size:14px; font-weight:500; color:var(--muted); margin:0 0 12px;">
+      Recently added
+    </h2>
+    <ul class="row-sep" style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column;">
+      {recentlyAdded.map((r) => (
+        <li>
+          <a href={r.href} style="display:block; padding:12px 0;">
+            <span style="font-weight:500;">{r.altName}</span>
+            <span class="muted"> replaces </span>
+            <span>{r.toolName}</span>
+          </a>
+        </li>
+      ))}
     </ul>
   </section>
+
+  <p style="margin-top:48px; font-size:13px; color:var(--muted);">
+    Tip: press <span class="chip" style="font-size:11px;">[ / ]</span> anywhere on this page to focus search. Or browse <a href="/all" class="accent">all tools</a>.
+  </p>
 </Layout>
+
+<style>
+  /* hide the empty-state sections when the search island has typed input.
+     The island doesn't manage these, so we use :has() on the search input value.
+     Fallback: always visible if :has() isn't supported — that's fine. */
+  :global(body:has(.search-input:not(:placeholder-shown))) [data-empty-only] {
+    display: none;
+  }
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

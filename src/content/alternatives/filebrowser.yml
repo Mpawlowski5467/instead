@@ -1,0 +1,16 @@
+name: File Browser
+replaces:
+  - dropbox
+description: Web-based file manager you point at a directory on your own server.
+website: https://filebrowser.org
+repo: https://github.com/filebrowser/filebrowser
+license: Apache-2.0
+tags:
+  - free
+  - open-source
+  - self-hostable
+platforms:
+  - web
+  - linux
+  - windows
+  - macos

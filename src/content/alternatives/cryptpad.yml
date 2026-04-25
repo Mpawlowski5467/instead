@@ -1,0 +1,16 @@
+name: CryptPad
+replaces:
+  - notion
+  - microsoft-word
+description: End-to-end encrypted suite for documents, sheets, slides, and shared whiteboards.
+website: https://cryptpad.org
+repo: https://github.com/cryptpad/cryptpad
+license: AGPL-3.0
+tags:
+  - free
+  - open-source
+  - self-hostable
+  - e2e-encrypted
+  - no-account
+platforms:
+  - web

@@ -1,0 +1,13 @@
+name: GoatCounter
+replaces:
+  - google-analytics
+description: Tiny, no-cookie web stats designed to be readable on a single screen.
+website: https://www.goatcounter.com
+repo: https://github.com/arp242/goatcounter
+license: EUPL-1.2
+tags:
+  - free
+  - open-source
+  - self-hostable
+platforms:
+  - web
